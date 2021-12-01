@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head ><title></title></head>
+<body>
+<h1>Create customer</h1>
+<p>
+    <a href="/home">Customer list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create}" th:object="${songForm}" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>First name:</td>
+            <td><label>
+                <input type="text" th:field="*{nameSong}"/>
+            </label></td>
+            <td th:if="${#fields.hasErrors('nameSong')}" th:errors="*{nameSong}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td><label>
+                <input type="text" th:field="*{singer}"/>
+            </label></td>
+            <td th:if="${#fields.hasErrors('singer')}" th:errors="*{singer}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Category:</td>
+            <td><label>
+                <input type="text" th:field="*{category}"/>
+            </label></td>
+            <td th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Song</td>
+            <td><input type="file" th:field="*{listen}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create user"></td>
+        </tr>
+
+    </table>
+</form>
+<footer></footer>
+</body>
+</html>
